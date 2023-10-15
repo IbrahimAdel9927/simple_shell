@@ -21,22 +21,28 @@ int main(int ac, char *av)
 	}
 	if (isatty(STDIN_FILENO) == 1)
 	{
+		do {
+			write(1, "$ ", 2);
+			col = read_in();
+			arg = handl_arg(col);
+			status = ex_arg(arg);
+			free(col);
+			free(arg);
+			if (status >= 0)
+				exit(status);
+		} while (status = -1);
 	}
 	else
 	{
+		do {
+			col = read_out();
+			arg = handl_arg(col);
+			status = ex_arg(arg);
+			free(col);
+			free(arg);
+			if (status >= 0)
+				exit(status);
+		} while (status == -1);
 	}
-/*
-	while (1)
-	{
-		write(1, "$ ", 2);
-		fflush(stdin);
-		_G = getline(&col, &col_l, stdin);
-		if (_G == EOF)
-		{
-			write(1, "\n", 1);
-			break;
-		}
-	}
-*/
 	return (0);
 }

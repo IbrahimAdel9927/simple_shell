@@ -1,0 +1,25 @@
+#include "ssh.h"
+
+char *read_in(void)
+{
+	char *inpt = NULL;
+	size_t buf = 0;
+	int fg;
+
+	fg = getline(&inpt, &buf, stdin);
+	if (fg == -1)
+	{
+		if (fg == EOF)
+		{
+			free(inpt);
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			free(inpt);
+			perror("error in reading from stdin");
+			exit(EXIT_FAILURE);
+		}
+	}
+	return (inpt);
+}

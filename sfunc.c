@@ -1,5 +1,9 @@
 #include "ssh.h"
-
+/**
+ * _strlen - get the string lenght
+ * @s: input
+ * Return : integer
+*/
 int _strlen(char *s)
 {
 	int i;
@@ -8,7 +12,12 @@ int _strlen(char *s)
 		i++;
 	return (i);
 }
-
+/**
+ * *_strcpy - copy the string
+ * @dest: input
+ * @src: input
+ * Return: integer
+*/
 char *_strcpy(char *dest, char *src)
 {
 	int l = 0;

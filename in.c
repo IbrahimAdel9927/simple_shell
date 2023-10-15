@@ -1,5 +1,9 @@
 #include "ssh.h"
-
+/**
+ * *read_in - afunction reads in active mode
+ *
+ * Return: char
+*/
 char *read_in(void)
 {
 	char *inpt = NULL;
@@ -23,7 +27,11 @@ char *read_in(void)
 	}
 	return (inpt);
 }
-
+/**
+ * *read_out - function reads in no_active mode
+ *
+ * Return: char
+*/
 char *read_out(void)
 {
 	int buf = 1024;

@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-
+char *read_in(void);
+char *read_out(void);
 
 #endif/*the_end*/

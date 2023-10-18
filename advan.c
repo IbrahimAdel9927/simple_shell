@@ -13,22 +13,24 @@ char *_getcol(char **buf, int bufl)
 
 /**
  * _st - the fanction that help us handle the input
+ * @arg: the input
  * @str: the first input
  * @c: the second input
  * Return: a pointer of string
 */
-void _st(char ***arg, char* str, const char* c)
+void _st(char ***arg, char *str, const char *c)
 {
 	char cstr[1000];
 	int i = 0;
-	char* re;
+	char *re;
 
 	_sc(cstr, str);
 	*arg = malloc(sizeof(char *) * 1024);
 	re = cstr;
 	while (1)
 	{
-		char* tk = strtok_r(re, c, &re);
+		char *tk = strtok_r(re, c, &re);
+
 		if (tk == NULL)
 			break;
 		(*arg)[i] = malloc(sizeof(char) * _sl(tk) + 1);

@@ -14,7 +14,7 @@ int _scm(char *s1, char *s2)
 	{
 		if (s1[a] != s2[a])
 		{
-			flag = ((int)s1[a] - 48) - ((int)s2[a] -48);
+			flag = ((int)s1[a] - 48) - ((int)s2[a] - 48);
 			break;
 		}
 		a++;
@@ -22,7 +22,11 @@ int _scm(char *s1, char *s2)
 	return (flag);
 }
 
-/***/
+/**
+ * _scc - func that copy string
+ * @str: the input
+ * Return: pointer of string
+*/
 char *_scc(char *str)
 {
 	unsigned int a = 0;
@@ -39,7 +43,12 @@ char *_scc(char *str)
 	return (k);
 }
 
-/***/
+/**
+ * _scat - func that concat two string
+ * @d: first input
+ * @s: second input
+ * Return: pointer of string
+*/
 char *_scat(char *d, char *s)
 {
 	int a = 0, b;

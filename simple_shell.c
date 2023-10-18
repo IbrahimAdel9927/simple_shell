@@ -1,11 +1,8 @@
 #include "ssh.h"
 
 /**
- * main - Entry point for a program that work as 
+ * main - Entry point for a program that work as
  * a unx shell
- *
- * @ac: num of the arg
- * @av: the arg
  *
  * Return: int
 */
@@ -35,11 +32,11 @@ int main(void)
 		{
 			continue;
 		}
-		free (arg[0]);
-		arg [0] = path;
+		free(arg[0]);
+		arg[0] = path;
 		status = ex_arg(arg, status);
 		if (status >= 0)
 			break;
 	} while (status == -1);
-	return (0);
+	return (status);
 }

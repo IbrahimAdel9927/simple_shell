@@ -1,5 +1,10 @@
 #include "ssh.h"
 
+/**
+ * _env - func that get the env
+ * @var: the input
+ * Return: string
+*/
 char *_env(char *var)
 {
 	char **env;
@@ -17,6 +22,11 @@ char *_env(char *var)
 	return (NULL);
 }
 
+/**
+ * pth - func get the path
+ * @col: the input
+ * Return: string
+*/
 char *pth(char *col)
 {
 	char *path = _env("PATH");
@@ -47,7 +57,7 @@ char *pth(char *col)
 		if (stat(fp, &st) == 0)
 		{
 			free(pc);
-			return(fp);
+			return (fp);
 		}
 		else
 		{

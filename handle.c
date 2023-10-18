@@ -1,6 +1,10 @@
 #include "ssh.h"
 
-/***/
+/**
+ * handl_arg - func that handle arg
+ * @col: the input
+ * Return: pointer
+*/
 char **handl_arg(char *col)
 {
 	int size = 64;
@@ -8,14 +12,18 @@ char **handl_arg(char *col)
 
 	if (!tks)
 	{
-		/*fprintf(stderr, "allocation error in split_line: tokens\n");
-		exit(EXIT_FAILURE);*/
 		return (NULL);
 	}
-	_st(&tks, col, "\t\r\n\a\"");
+	_st(&tks, col, " ");
 	return (tks);
 }
 
+/**
+ * ex_arg - func that execve
+ * @arg: first input
+ * @status: the second input
+ * Return: int
+*/
 int ex_arg(char **arg, int status)
 {
 	if (arg[0] == NULL)
@@ -39,6 +47,11 @@ int ex_arg(char **arg, int status)
 	return (_process(arg));
 }
 
+/**
+ * _process - func that execve
+ * @arg: the input
+ * Return: int
+*/
 int _process(char **arg)
 {
 	pid_t id;
@@ -48,7 +61,7 @@ int _process(char **arg)
 	if (id == 0)
 	{
 		execve(arg[0], arg, environ);
-		/**free*/
+		free_arg(arg);
 	}
 	else
 	{

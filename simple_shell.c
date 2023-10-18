@@ -23,13 +23,10 @@ int main(int ac, char **av)
 			free(com);
 			break;
 		}
-		if (com[_sl(com) - 1] == '\n')
-			com[_sl(com) - 1] = '\0';
-		if (_sl(com) == 0)
-			continue;
+		com[strcspn(com, "\n")] = '\0';
 		_ex(environ, &com, av);
 		free(com);
-	} while (!feof(stdin));
+	} while (1);
 return (0);
 }
 

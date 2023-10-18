@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <signal.h>
+#define ml 1000
 
 extern char **environ;
 
@@ -34,5 +35,6 @@ char *_scat(char *d, char *s);
 char *_scc(char *str);
 void p_env(char **environ);
 void free_arg(char **arg);
+void _ex(char **environ, char **com);
 
 #endif/*the_end*/

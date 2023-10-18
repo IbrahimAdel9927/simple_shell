@@ -14,6 +14,8 @@
 
 char *read_in(void);
 char *read_out(void);
-void _getcol(char **buffer, int bufl);
+char *_getcol(char **buffer, int bufl);
+char* _st(char *str, char c);
+char *_sc(char *dest, char *src);
 
 #endif/*the_end*/

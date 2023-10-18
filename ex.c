@@ -1,8 +1,7 @@
 #include "ssh.h"
 
 /**
- * _ec - function help us
- * @pid: first input
+ * _ex - function help us
  * @environ: second input
  * @com: third input
 */

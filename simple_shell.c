@@ -5,7 +5,7 @@
  * a unx shell
  *
  * Return: int
-*/
+*//*
 int main(void)
 {
 	char *col = NULL, *path = NULL, **arg = NULL;
@@ -39,4 +39,34 @@ int main(void)
 			break;
 	} while (status == -1);
 	return (status);
+}*/
+#define ml 1000
+int main(void) {
+    char com[ml];
+    char pro[] = "$ ";
+
+    while (1) {
+	    if (isatty(STDIN_FILENO) == 1)
+		    printf("%s", pro);
+
+        if (fgets(com, sizeof(com), stdin) == NULL) {
+		if (isatty(STDIN_FILENO) == 1)
+			printf("\n");
+            break;
+        }
+        com[strcspn(com, "\n")] = '\0';
+        pid_t pid = fork();
+
+        if (pid < 0) {
+            break;
+        } else if (pid == 0) {
+            execlp(com, com, NULL);
+            printf("Command not found: %s\n", com);
+            break;;
+        } else {
+            wait(NULL);
+        }
+    }
+
+    return 0;
 }

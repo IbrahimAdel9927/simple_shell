@@ -10,7 +10,7 @@ char **handl_arg(char *col)
 	int size = 64;
 	char **tks = malloc(sizeof(char *) * size);
 
-	if (!tks)
+	if (tks == NULL)
 	{
 		return (NULL);
 	}
@@ -61,7 +61,12 @@ int _process(char **arg)
 	if (id == 0)
 	{
 		execve(arg[0], arg, environ);
+		write(2, "./hsh: ", 7);
+		write(2, ": ", 2);
+		write(2, arg[0], _sl(arg[0]));
+		write(2, ": No such file or directory\n", 28);
 		free_arg(arg);
+		exit(127);
 	}
 	else
 	{

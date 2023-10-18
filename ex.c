@@ -5,7 +5,7 @@
  * @environ: second input
  * @com: third input
 */
-void _ex(char **environ, char **com)
+void _ex(char **environ, char **com, char **av)
 {
 	pid_t pid = fork();
 	char *args[ml];
@@ -23,8 +23,8 @@ void _ex(char **environ, char **com)
 		}
 		args[i] = NULL;
 		execve(args[0], args, environ);
-		kh_string("Command not found: ");
-		kh_string(args[0]);
+		kh_string(av[0]);
+		kh_string(": No such file or directory");
 		kh_chaar('\n');
 		return;
 	}

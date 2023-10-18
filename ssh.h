@@ -35,6 +35,6 @@ char *_scat(char *d, char *s);
 char *_scc(char *str);
 void p_env(char **environ);
 void free_arg(char **arg);
-void _ex(char **environ, char **com);
+void _ex(char **environ, char **com, char **av);
 
 #endif/*the_end*/

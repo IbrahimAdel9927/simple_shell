@@ -60,13 +60,26 @@ int main(void) {
         if (pid < 0) {
             break;
         } else if (pid == 0) {
-            execlp(com, com, NULL);
-            printf("Command not found: %s\n", com);
-            break;;
-        } else {
+            char* args[ml];
+            char* token = strtok(com, " ");
+            int i = 0;
+            
+            while (token != NULL && i < ml - 1) {
+                args[i++] = token;
+                token = strtok(NULL, " ");
+            }
+            
+            args[i] = NULL;
+	    extern char** environ;
+
+	    execve(args[0], args, environ);
+	    printf("Command not found: %s\n", args[0]);
+	    break;
+	} else {
             wait(NULL);
         }
     }
 
-    return 0;
+    return(0);
 }
+

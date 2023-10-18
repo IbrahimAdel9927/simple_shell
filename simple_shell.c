@@ -11,7 +11,7 @@
 */
 int main(void)
 {
-	char *col = NULL/*, *arg = NULL*/;
+	char *col = NULL, **arg = NULL;
 	int status = -1;
 
 	do {
@@ -25,12 +25,12 @@ int main(void)
 			free(col);
 			break;
 		}
-		/*arg = handl_arg(col);
-		status = ex_arg(arg);*/
-		/*free(col);*/
-		/*free(arg);
+		arg = handl_arg(col);
+		status = ex_arg(arg);
+		free(col);
+		free(arg);
 		if (status >= 0)
-			break;*/
+			break;
 	} while (status == -1);
 	return (0);
 }

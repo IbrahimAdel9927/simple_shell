@@ -17,26 +17,24 @@ char *_getcol(char **buf, int bufl)
  * @c: the second input
  * Return: a pointer of string
 */
-char* _st(char *str, char c)
+void _st(char ***arg, char* str, const char* c)
 {
-	static char *handle = NULL;
-	char *tk = NULL;
+	char cstr[1000];
+	int i = 0;
+	char* re;
 
-	if (handle != NULL)
-		handle = str;
-	if (!*handle || !handle)
-		return (NULL);
-	while (*handle == c)
-		handle++;
-	tk = handle;
-
-	while (*handle && (*handle != c))
-		handle++;
-	if (*handle)
+	_sc(cstr, str);
+	*arg = malloc(sizeof(char *) * 1024);
+	re = cstr;
+	while (1)
 	{
-		*handle = '\0';
-		handle++;
+		char* tk = strtok_r(re, c, &re);
+		if (tk == NULL)
+			break;
+		(*arg)[i] = malloc(sizeof(char) * _sl(tk) + 1);
+		_sc((*arg)[i], tk);
+		i++;
 	}
-	return (tk);
+	(*arg)[i] = NULL;
 }
 

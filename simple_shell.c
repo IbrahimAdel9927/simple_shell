@@ -25,6 +25,10 @@ int main(void)
 			free(col);
 			break;
 		}
+		if (col[_sl(col) - 1] == '\n')
+			col[_sl(col) - 1] = '\0';
+		if (_sl(col) == 0)
+			continue;
 		arg = handl_arg(col);
 		status = ex_arg(arg);
 		free(col);

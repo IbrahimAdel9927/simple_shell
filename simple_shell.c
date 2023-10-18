@@ -11,7 +11,7 @@
 */
 int main(void)
 {
-	char *col = NULL, **arg = NULL;
+	char *col = NULL, *path = NULL, **arg = NULL;
 	int status = -1;
 
 	do {
@@ -30,9 +30,14 @@ int main(void)
 		if (_sl(col) == 0)
 			continue;
 		arg = handl_arg(col);
-		status = ex_arg(arg);
-		free(col);
-		free(arg);
+		path = pth(arg[0]);
+		if (path == NULL)
+		{
+			continue;
+		}
+		free (arg[0]);
+		arg [0] = path;
+		status = ex_arg(arg, status);
 		if (status >= 0)
 			break;
 	} while (status == -1);

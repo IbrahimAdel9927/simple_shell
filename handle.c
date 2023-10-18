@@ -16,7 +16,7 @@ char **handl_arg(char *col)
 	return (tks);
 }
 
-int ex_arg(char **arg)
+int ex_arg(char **arg, int status)
 {
 	if (arg[0] == NULL)
 		return (-1);
@@ -25,12 +25,16 @@ int ex_arg(char **arg)
 	}
 	else if (_scm(arg[0], "env") == 0)
 	{
+		p_env(environ);
+		return (1);
 	}
 	else if (_scm(arg[0], "help") == 0)
 	{
 	}
 	else if (_scm(arg[0], "exit") == 0)
 	{
+		free_arg(arg);
+		exit(status);
 	}
 	return (_process(arg));
 }
@@ -43,14 +47,14 @@ int _process(char **arg)
 	id = fork();
 	if (id == 0)
 	{
-		execve(arg[0], arg, NULL);
+		execve(arg[0], arg, environ);
 		/**free*/
 	}
 	else
 	{
-		waitpid(id, &st, WUNTRACED);
+		waitpid(id, &st, 0);
 		st = WEXITSTATUS(st);
-		/*free*/
+		free_arg(arg);
 	}
 	return (st);
 }

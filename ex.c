@@ -3,6 +3,7 @@
 /**
  * _ex - function help us
  * @environ: second input
+ * @av: third input
  * @com: third input
 */
 void _ex(char **environ, char **com, char **av)
